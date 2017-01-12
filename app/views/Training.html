@@ -1,0 +1,47 @@
+<title>
+    {{training.trainingName}}
+</title>
+<div>
+    <center>
+        <h2>Training name: {{trainingExercises[1].Training.trainingName}} </h2>
+    </center>
+    <center><img src="{{trainingExercises[1].Training.url}}" width="400px" height="220px" class="img-rounded"></center>
+    <div class="container">
+        <ul>
+            <li>
+                <h4>Number of cycles: {{trainingExercises[1].Training.cycles}} </h4>
+            </li>
+            <li>
+                <h4>Pause between cycles: {{trainingExercises[1].Training.time}} secs</h4>
+            </li>
+            <li>
+                <h4>Difficulty: {{trainingExercises[1].Training.difficulty}}</h4>
+            </li>
+        </ul>
+        <div class="container">
+            <center>
+                <h2>Exercises</h2>
+            </center>
+            <div class="container">
+                <table class="table table-bordered" width="400px">
+                    <tr>
+                        <th>Exercise Name</th>
+                        <th>
+                            <center>Series</center>
+                        </th>
+                        <th>
+                            <center>Done</center>
+                        </th>
+                    </tr>
+                    <tr ng-repeat="trainingExercise in trainingExercises">
+                        <td class="trainingName">{{trainingExercise.Exercise.name}}</td>
+                        <td>
+                            <center>{{trainingExercise.series}}</center>
+                        </td>
+                        <td>
+                            <center><input type="checkbox" class="md-checkbox"></center>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>

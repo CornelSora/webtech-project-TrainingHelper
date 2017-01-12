@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="js/controllers/trainingController.js"></script>
+</head>
+
+<body bgcolor="#E6E6FA">
+    <div class="container">
+        <br/>
+        <table class="table table-bordered">
+            <thead>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Cycles</th>
+                <th>Time</th>
+                <th>Difficulty</th>
+                <th>Proof</th>
+            </thead>
+            <tr ng-repeat="training in trainings">
+                <td>{{$index + 1}}</td>
+                <td>{{training.trainingName}}</td>
+                <td>{{training.cycles}}</td>
+                <td>{{training.time}} mins</td>
+                <td>{{training.difficulty}}</td>
+                <td><img src="{{training.url}}" width="170px" height="100px" role="button" ui-sref="Training({'id': training.id})" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

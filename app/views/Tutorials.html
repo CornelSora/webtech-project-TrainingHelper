@@ -1,0 +1,91 @@
+<form name="addForm">
+    Select an exercise:
+    <select name="select" class="form-control" ng-model="exercise" ng-options="exercise.name for exercise in exercises" ng-change="selectExercise(exercise.id)" required>
+    </select>
+    <br/>
+    <div class="form-group">
+        <label for="videoTitle">Title:</label> <br/>
+        <input type="text" id="videoTitle" name="videoTitle" ng-model="video.name" required minlength="3" /> <br />
+    </div>
+    <div class="form-group">
+        <label for="videoUrl">Video url:</label> <br/>
+        <input type="text" id="videoUrl" name="videoUrl" ng-model="video.url" required minlength="5" valid-link/> <br/>
+    </div>
+    <span ng-show="addForm.select.$error.required" style="color:red">Select an exercise</span><br/>
+    <div ng-messages="addForm.videoTitle.$error">
+        <div ng-message="required">
+            The video name is required
+        </div>
+        <div ng-message="minlength">
+            The video name must have at least 3 characters
+        </div>
+    </div>
+    <div ng-messages="addForm.videoUrl.$error">
+        <div ng-message="validLink">
+            The link shoud be from www.youtube.com
+        </div>
+    </div>
+    <center>
+        <button type="submit" class="btn btn-primary" ng-click="addTutorial(video, exercise.id)">Add new video</button>
+        <button class="btn btn-info" ng-click="ShowAll()">Show all videos</button> <br/>
+    </center>
+</form>
+
+<table class="table table-striped" id="tabelVideo">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Show</th>
+    </tr>
+    <tr ng-repeat="tutorial in tutorials">
+        <td>{{$index + 1}}</td>
+        <td>{{tutorial.name}}</td>
+        <td><input type="checkbox" class="md-checkbox" ng-click="addSelectedVideo(tutorial.id)"></td>
+    </tr>
+</table><br/>
+<div class="container-fluid" id="videos">
+    <div style="margin-left:20px" class="col-sm-6 col-md-4" ng-repeat="selectedVideo in selectedVid" ng-include="getTemplate(selectedVideo)">
+    </div>
+</div>
+<script type="text/ng-template" id="display">
+    <div ng-if="tutorials.length == 0 && exercise.name != null">
+        Sorry, there isn't a video with : {{ exercise.name }}
+    </div>
+    <div class="row">
+        <div class="thumbnail">
+            <center>
+                <h4>{{selectedVideo.name}}</h4>
+            </center>
+            <div class="caption" style="margin-left:25px">
+                <youtube src="selectedVideo.url"></youtube>
+            </div>
+            <center>
+                <input type="button" class="btn btn-info" value="Edit" ng-click="editVideo(selectedVideo)" />
+                <input type="button" class="btn btn-danger" value="Delete" ng-click="deleteVideo(selectedVideo)" />
+            </center>
+        </div>
+
+    </div>
+</script>
+
+<script type="text/ng-template" id="edit">
+    <div class="row">
+        <div class="thumbnail">
+            <center>
+                <div class="form-group">
+                    <input type="text" ng-model="selectedVideo.name" />
+                </div>
+                <div class="form-group">
+                    <input type="text" ng-model="selectedVideo.url" />
+                </div>
+            </center>
+            <div class="caption" style="margin-left:25px">
+                <youtube src="selectedVideo.url"></youtube>
+            </div>
+            <center>
+                <input type="button" class=" btn btn-warning" value="Cancel" ng-click="cancelEditing()" />
+                <input type="button" class="btn btn-success" value="Save" ng-click="saveTutorial(selectedVideo)" />
+            </center>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,40 @@
+.md-checkbox.md-checked.green .md-icon {
+ background-color: rgba(0, 255, 0, 0.87);
+}
+
+
+.trainingName {
+    margin-left: 50px;
+}
+
+.md-checkbox {
+  margin: 8px;
+  cursor: pointer;
+  padding-left: 18px;
+  padding-right: 0;
+  line-height: 26px;
+  min-width: 18px;
+  min-height: 18px;
+}
+
+form {
+    width:30%;
+    border: 1px solid Gray;
+    border-radius: 5px;
+    margin: 20px;
+    background-color: #EEEEEE;
+    padding: 10px;
+    float: left;
+}
+
+#tabelVideo {
+    width: 60%;
+    float: right;
+    margin-top: 20px;
+    margin-right: 30px;
+    padding: 10px;
+}
+
+#videos {
+    clear: both;
+}

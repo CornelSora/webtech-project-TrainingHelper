@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.6.0/angular-messages.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/trusted.js"></script>
+    <script type="text/javascript" src="js/controllers/trainingsController.js"></script>
+    <script type="text/javascript" src="js/controllers/trainingController.js"></script>
+    <script type="text/javascript" src="js/controllers/tutorialsController.js"></script>
+    <link rel="stylesheet" href="styles/style.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+</head>
+
+<body bgcolor="#E6E6FA" ng-app="SportApp">
+    <ul class="nav nav-tabs">
+        <li><a>My App</a></li>
+        <li><a ui-sref="Trainings">Trainings</a></li>
+        <li><a ui-sref="Tutorials({id : 1})">Tutorials</a></li>
+        <li><a ui-sref="helloToMyApp">About</a></li>
+    </ul>
+    <div ui-view></div>
+</body>
+
+</html>
